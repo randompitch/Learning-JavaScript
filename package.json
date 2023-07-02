@@ -1,0 +1,15 @@
+{
+  "name": "learning-javascript",
+  "version": "1.0.0",
+  "description": "This repository was created while learning JavaScript. I'll try to practice daily and make regular commits.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
