@@ -30,9 +30,15 @@ function handleFirstRequest(req,res) {
     console.log(req.body);
     //var counter = req.headers.counter;
     var counter = req.body.counter;
-    var calcSum = calculateSsum(counter);
-    var answer = "The sum is " + calcSum;
-    res.send(answer);
+    if(counter < 100000) {
+        var calcSum = calculateSsum(counter);
+        var answer = "The sum is " + calcSum;
+        res.send(answer);
+    }
+    else {
+        res.status(411).send("Sent a very big number");
+    }
+    
 }
 
 //app.get('/', handleFirstRequest);
