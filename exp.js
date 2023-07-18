@@ -24,26 +24,44 @@ function calculateSsum(counter) {
     return sum;
 }
 
+function calculateMul(counter) {
+    let ans = 1;
+    for(let i=1;i<=counter; i++){
+        ans *= i;
+    }
+    return ans;
+}
+
 function handleFirstRequest(req,res) {
     //var counter = req.query.counter;
     //console.log(req.headers);
-    console.log(req.body);
+    //console.log(req.body);
     //var counter = req.headers.counter;
     var counter = req.body.counter;
-    if(counter < 100000) {
-        var calcSum = calculateSsum(counter);
-        var answer = "The sum is " + calcSum;
-        res.send(answer);
+    var calcSum = calculateSsum(counter);
+    var calcMul = calculateMul(counter);
+
+    var objSum = {
+        sum: calcSum,
+        mul: calcMul
     }
-    else {
-        res.status(411).send("Sent a very big number");
-    }
-    
+    //var answer = "The sum is " + calcSum;
+    res.status(200).send(objSum);
+}
+
+function givePage(req, res) {
+    res.send(`<head> 
+        <title>From Page</title>
+    </head>
+    <body>
+        <i>hi there</i>
+    </body>`);
 }
 
 //app.get('/', handleFirstRequest);
 //app.get('/handleSum', handleFirstRequest);
 app.post('/handleSum', handleFirstRequest);
+app.get("/", givePage);
 
 function started() {
     console.log(`Example app listening on port ${port}`);
