@@ -33,11 +33,11 @@ function calculateMul(counter) {
 }
 
 function handleFirstRequest(req,res) {
-    //var counter = req.query.counter;
+    var counter = req.query.counter;
     //console.log(req.headers);
     //console.log(req.body);
     //var counter = req.headers.counter;
-    var counter = req.body.counter;
+    //var counter = req.body.counter;
     var calcSum = calculateSsum(counter);
     var calcMul = calculateMul(counter);
 
@@ -50,17 +50,12 @@ function handleFirstRequest(req,res) {
 }
 
 function givePage(req, res) {
-    res.send(`<head> 
-        <title>From Page</title>
-    </head>
-    <body>
-        <i>hi there</i>
-    </body>`);
+    res.sendFile(__dirname + "/ind.html");
 }
 
 //app.get('/', handleFirstRequest);
 //app.get('/handleSum', handleFirstRequest);
-app.post('/handleSum', handleFirstRequest);
+app.get('/handleSum', handleFirstRequest);
 app.get("/", givePage);
 
 function started() {
